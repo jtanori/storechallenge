@@ -1,6 +1,6 @@
 angular
     .module('app', ['ui.router'])
-    .constant('API_URL', 'http://localhost:5000/api')
+    .constant('API_URL', '/api')
     .config(function($stateProvider, $urlRouterProvider) {
         //Default
         $urlRouterProvider.otherwise("index");
