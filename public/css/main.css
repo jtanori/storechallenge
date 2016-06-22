@@ -25,25 +25,6 @@ hr {
     padding: 0;
 }
 
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-    vertical-align: middle;
-}
-
-fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-textarea {
-    resize: vertical;
-}
-
 .browserupgrade {
     margin: 0.2em 0;
     background: #ccc;
@@ -58,88 +39,14 @@ textarea {
 
 body {
     font: 16px/26px Helvetica, Helvetica Neue, Arial;
-}
-
-.wrapper {
-    width: 90%;
-    margin: 0 5%;
-}
-
-/* ===================
-    ALL: Orange Theme
-   =================== */
-
-.header-container {
-    border-bottom: 20px solid #e44d26;
-}
-
-.footer-container,
-.main aside {
-    border-top: 20px solid #e44d26;
-}
-
-.header-container,
-.footer-container,
-.main aside {
-    background: #f16529;
+    text-align: center;
+    background: url(/img/bg.svg) white no-repeat center top;
+    background-size: 100%;
 }
 
 .title {
-    color: white;
-}
-
-/* ==============
-    MOBILE: Menu
-   ============== */
-
-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-nav a {
-    display: block;
-    margin-bottom: 10px;
-    padding: 15px 0;
-
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-
-    color: white;
-    background: #e44d26;
-}
-
-nav a:hover,
-nav a:visited {
-    color: white;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* ==============
-    MOBILE: Main
-   ============== */
-
-.main {
-    padding: 30px 0;
-}
-
-.main article h1 {
-    font-size: 2em;
-}
-
-.main aside {
-    color: white;
-    padding: 0px 5% 10px;
-}
-
-.footer-container footer {
-    color: white;
-    padding: 20px 0;
+    font-size: 3rem;
+    color: rgb(67,67,67);
 }
 
 /* ===============
@@ -154,45 +61,104 @@ nav a:hover {
    Author's custom styles
    ========================================================================== */
 
+.container {
+    width: 1075px;
+    margin: 0 auto;
+}
 
+#nav {
+    padding: 50px 2px;
+}
 
+#products {
+    margin-bottom: 5rem;
+}
 
+#footer {
+    background: rgb(157, 204, 90);
+}
 
+#footer .container {
+    padding: 4rem 3rem;
+    margin-top: 5rem;
+    box-sizing: border-box;
+}
 
+table {
+    width: 100%;
+}
 
+table thead {
+    background: rgb(157, 204, 90);
+}
 
+table thead th {
+    font-size: 2rem;
+    padding: 1rem 5rem;
+    font-weight: bold;
+}
 
+table thead th:first-child {
+    border-radius: 1rem 0 0 0;
+}
 
+table thead th:last-child {
+    border-radius: 0 1rem 0 0;
+}
 
+table td,
+table th {
+    color: white;
+    text-align: left;
+}
 
+table tbody tr {
+    background: rgb(55,55,55);
+    font-size: 1.25rem;
+}
 
+table tbody tr td {
+    padding: 2rem 5rem;
+    font-weight: lighter;
+}
 
+table tbody tr:nth-child(even) {
+    background: rgb(75,77,79);
+}
 
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
+table tbody tr:last-child > th {
+    padding: 2rem 0;
+}
 
-@media only screen and (min-width: 480px) {
+table tbody tr:last-child > th:first-child {
+    border-radius: 0 0 0 1rem;
+}
 
-/* ====================
-    INTERMEDIATE: Menu
-   ==================== */
+table tbody tr:last-child > th:last-child {
+    border-radius: 0 0 1rem 0;
+}
 
-    nav a {
-        float: left;
-        width: 27%;
-        margin: 0 1.7%;
-        padding: 25px 2%;
-        margin-bottom: 0;
-    }
+.add-button {
+    display: inline-block;
+    background: black;
+    border-radius: 1rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    background: rgb(157, 204, 90);
+    color: rgb(55,55,55);
+    font-weight: bold;
+    text-decoration: none;
+}
 
-    nav li:first-child a {
-        margin-left: 0;
-    }
+.add-button.light {
+    color: rgb(75,77,79);
+}
 
-    nav li:last-child a {
-        margin-right: 0;
-    }
+#cart {
+    width: 550px;
+    margin: 0 0 0 auto;
+}
 
 /* ========================
     INTERMEDIATE: IE Fixes
@@ -207,105 +173,33 @@ nav a:hover {
     }
 }
 
-@media only screen and (min-width: 768px) {
-
-/* ====================
-    WIDE: CSS3 Effects
-   ==================== */
-
-    .header-container,
-    .main aside {
-        -webkit-box-shadow: 0 5px 10px #aaa;
-           -moz-box-shadow: 0 5px 10px #aaa;
-                box-shadow: 0 5px 10px #aaa;
-    }
-
-/* ============
-    WIDE: Menu
-   ============ */
-
-    .title {
-        float: left;
-    }
-
-    nav {
-        float: right;
-        width: 38%;
-    }
-
-/* ============
-    WIDE: Main
-   ============ */
-
-    .main article {
-        float: left;
-        width: 57%;
-    }
-
-    .main aside {
-        float: right;
-        width: 28%;
-    }
-}
-
-@media only screen and (min-width: 1140px) {
-
-/* ===============
-    Maximal Width
-   =============== */
-
-    .wrapper {
-        width: 1026px; /* 1140px - 10% for margins */
-        margin: 0 auto;
-    }
-}
-
 /* ==========================================================================
    Helper classes
    ========================================================================== */
-
-.hidden {
-    display: none !important;
-    visibility: hidden;
-}
-
-.visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-}
-
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
-}
-
-.invisible {
-    visibility: hidden;
-}
-
 .clearfix:before,
 .clearfix:after {
-    content: " ";
-    display: table;
+   content: " ";
+   display: table;
 }
 
 .clearfix:after {
-    clear: both;
+   clear: both;
 }
 
 .clearfix {
-    *zoom: 1;
+   *zoom: 1;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
 }
 
 /* ==========================================================================

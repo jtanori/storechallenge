@@ -7,14 +7,20 @@ html
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(rel='stylesheet', href='css/normalize.min.css')
         link(rel='stylesheet', href='css/main.css')
-        link(rel='stylesheet', href='/stylesheets/style.css')
         script(src='js/vendor/modernizr-2.8.3.min.js')
     body(ng-app='app')
-        .navbar
-            a(href='#')
-                img
+        .navbar#nav
+            .container.text-left
+                a(href='#')
+                    img(src="/img/logo.png", alt="Super Page Logo")
 
-        block content
+        div.container#main
+            block content
+
+        footer#footer
+            .container.text-right
+                a#up(href="#", ng-click="up()")
+                    img(src="/img/up.png")
 
         script(src='lib/angular/angular.min.js')
         script(src='lib/angular-ui-router/release/angular-ui-router.min.js')
