@@ -84,6 +84,27 @@ body {
     box-sizing: border-box;
 }
 
+#cart {
+    width: 550px;
+    margin: 0 0 0 auto;
+}
+
+#mainLoader {
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    display: table;
+    height: 100%;
+}
+
+#mainLoader > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 table {
     width: 100%;
 }
@@ -126,16 +147,24 @@ table tbody tr:nth-child(even) {
     background: rgb(75,77,79);
 }
 
-table tbody tr:last-child > th {
+table tbody tr:last-child > td {
     padding: 2rem 0;
 }
 
-table tbody tr:last-child > th:first-child {
+table tbody tr:last-child > td:first-child {
     border-radius: 0 0 0 1rem;
 }
 
-table tbody tr:last-child > th:last-child {
+table tbody tr:last-child > td:last-child {
     border-radius: 0 0 1rem 0;
+}
+
+table tbody tr:last-child > td {
+    width: 25%;
+}
+
+table tbody tr:last-child > td div {
+    padding: 0 0.5rem;
 }
 
 .add-button {
@@ -159,25 +188,8 @@ table tbody tr:last-child > th:last-child {
     color: rgb(75,77,79);
 }
 
-#cart {
-    width: 550px;
-    margin: 0 0 0 auto;
-}
-
-#mainLoader {
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    position: fixed;
-    background: rgba(0,0,0,0.5);
-    color: white;
-    display: table;
-    height: 100%;
-}
-
-#mainLoader > div {
-    display: table-cell;
-    vertical-align: middle;
+.no-padding-left {
+    padding-left: 0;
 }
 
 /* ========================

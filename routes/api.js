@@ -10,6 +10,8 @@ var data = require('../data/products');
 function ensureCart(req, res, next){
     var sess = req.session;
 
+    console.log('session', sess);
+
     if(!sess.cart || !(sess.cart instanceof Cart)){
         sess.cart = new Cart();
     }
@@ -79,7 +81,7 @@ router.delete('/cart', function(req, res, next) {
 * @return {array}
 */
 router.get('/products', function(req, res, next) {
-    res.status(200).json(data);
+    res.status(200).json(data.get());
 });
 
 module.exports = router;

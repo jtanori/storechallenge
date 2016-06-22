@@ -35,4 +35,28 @@ var data = [
     },
 ];
 
-module.exports = data;
+module.exports = {
+    get: function(code){
+        if(code){
+            var product = data.find(function(p){
+                console.log(p.code, code);
+                return p.code === code;
+            });
+
+            console.log('product found', product);
+
+            return product;
+        }
+
+        return data;
+    },
+    indexAllByCode: function(){
+        var o = {};
+
+        data.forEach(function(p){
+            o[p.code] = p;
+        });
+
+        return o;
+    }
+};

@@ -1,5 +1,6 @@
 //products data
 var data = require('./data/products');
+var discounts = require('./discounts');
 
 /**
 * Cart literal
@@ -8,26 +9,15 @@ var Cart = function(){
     var items = {};
     var total = 0;
 
-    // Since we are using a defined product list we can do this
-    // kind of thing, when using a database or other kind of data store
-    // We would check if every product we are trying to add to the
-    // cart exists in the store
-    function getProductCodes(){
-        console.log(data, 'data');
-        var productCodes = data.map(function(product){
-            console.log('product', product);
-            return product.code;
-        });
-    }
-
     //Find valid products
     function getValidProducts(products){
-        var productCodes = getProductCodes();
-
-        console.log('product codes', productCodes);
+        var productCodes = data.indexAllByCode();
 
         return products.filter(function(product){
-            if(product.code && productCodes.infexOf(product.code) >= 0){
+            if(product.code && productCodes[product.code]){
+                product.price = productCodes[product.code].price;
+                product.name = productCodes[product.code].name;
+
                 return product;
             }
         });
@@ -37,7 +27,7 @@ var Cart = function(){
     function getPrice(price, quantity){
         var totalPrice = 0;
 
-        if(product && quantity){
+        if(price && quantity){
             totalPrice = price * quantity;
         }
 
@@ -45,15 +35,11 @@ var Cart = function(){
     }
 
     //Check and get discount for product
-    function hasDiscount(code){
-        var product = data.find(function(p){
-            if(p && p.code === code){
-                return p;
-            }
-        });
+    function hasDiscount(code, quantity){
+        var product = data.get(code);
 
-        if(p)
-            return p.discount;
+        if(product && product.discount)
+            return product.discount;
 
         return false;
     }
@@ -74,10 +60,10 @@ var Cart = function(){
                         items[p.code] = p;
                     }
                     //Check and get current discount setup for given product
-                    var hasDiscount = hasDiscount(p);
+                    var productHasDiscount = hasDiscount(p.code, p.quantity);
 
-                    if(hasDiscount){
-                        items[p.code].discount = hasDiscount;
+                    if(productHasDiscount){
+                        items[p.code].discount = productHasDiscount;
                     }
                 });
                 //Return updated cart
@@ -98,15 +84,33 @@ var Cart = function(){
         update: function(){
             try{
                 //Calculate totals
-                total = items.map(function(p){
-                    if(p && p.discount){
-                        return discounts.apply(p, p.quantity);
+                total = Object.keys(items).map(function(p){
+                    var product = items[p];
+                    var price = 0;
+
+                    if(product && product.discount){
+                        try{
+                            price = discounts.apply(product);
+                            product.discountApplied = true;
+                            product.price = price;
+
+                            return price;
+                        }catch(e){
+                            console.log(e, 'error');
+                            return getPrice(product.price, product.quantity);
+                        }
                     }else{
-                        return getPrice(p.price, p.quantity);
+                        console.log('calculate price', product);
+                        return getPrice(product.price, product.quantity);
                     }
-                }).reduce(function(c, n){
+                });
+
+                console.log('on update', total, items);
+
+                total = total.reduce(function(c, n){
+                    console.log(c, n, 'reduce');
                     return c + n;
-                }, 0);
+                }, 0)
 
                 return {total: total, items: items};
             }catch(e){

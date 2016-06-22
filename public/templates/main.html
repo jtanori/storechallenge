@@ -13,9 +13,9 @@
             <td class="text-center"><a href="#" ng-click="add(product)" class="add-button" ng-class-even="'light'">&#43;</a></td>
         </tr>
         <tr>
-            <th>&nbsp;</th>
-            <th>&nbsp;</th>
-            <th>&nbsp;</th>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
     </tbody>
 </table>
@@ -29,19 +29,28 @@
         <thead>
             <tr>
                 <th colspan="2">Name</th>
-                <th colspan="2">Price</th>
+                <th colspan="2" class="no-padding-left">Price</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="product in cart.items">
-                <td colspan="2">{{product.name}}</td>
-                <td colspan="2">{{product.total || product.price}}$</td>
+                <td colspan="2">{{product.name}} ({{product.quantity}})</td>
+                <td colspan="2">
+                    <div ng-if="product.discountApplied">
+                        {{product.price}}$
+                    </div>
+                    <div ng-if="!product.discountApplied">{{product.price}}$</div>
+                </td>
             </tr>
             <tr>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
+                <td></td>
+                <td class="text-right" colspan="1">
+                    <div>Total:</div>
+                </td>
+                <td colspan="1">
+                    <div>{{cart.total}}$</div>
+                </td>
+                <td></td>
             </tr>
         </tbody>
     </table>

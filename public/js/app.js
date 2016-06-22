@@ -109,9 +109,14 @@ angular
                         RequestService
                             .do('cart', 'POST', {products: items})
                             .then(function(response){
-                                console.log('response', response);
+                                $timeout(function(){
+                                    $scope.$apply(function(){
+                                        $scope.cart.items = response.items;
+                                        $scope.cart.total = response.total;
+                                    });
+                                });
                             }, function(e){
-                                console.log('error', e);
+                                alert(e.message);
                             })
                             .finally(function(){
                                 $rootScope.hideLoading();
