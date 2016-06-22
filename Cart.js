@@ -96,12 +96,12 @@ var Cart = function(){
 
                             return price;
                         }catch(e){
-                            console.log(e, 'error');
-                            return getPrice(product.price, product.quantity);
+                            product.price = getPrice(product.price, product.quantity);
+                            return product.price;
                         }
                     }else{
-                        console.log('calculate price', product);
-                        return getPrice(product.price, product.quantity);
+                        product.price = getPrice(product.price, product.quantity);
+                        return product.price;
                     }
                 });
 

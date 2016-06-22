@@ -9,9 +9,7 @@ var data = require('../data/products');
 */
 function ensureCart(req, res, next){
     var sess = req.session;
-
-    console.log('session', sess);
-
+    
     if(!sess.cart || !(sess.cart instanceof Cart)){
         sess.cart = new Cart();
     }
