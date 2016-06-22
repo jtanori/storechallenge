@@ -1,0 +1,49 @@
+<!-- Product list -->
+<table id="products">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th colspan="2">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="product in products">
+            <td>{{product.name}}</td>
+            <td>{{product.price}}$</td>
+            <td class="text-center"><a href="#" ng-click="add(product)" class="add-button" ng-class-even="'light'">&#43;</a></td>
+        </tr>
+        <tr>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Cart -->
+<div id="cart">
+    <div class="text-left">
+        <h2 class="title">Checkout</h2>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Name</th>
+                <th colspan="2">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="product in cart.items">
+                <td colspan="2">{{product.name}}</td>
+                <td colspan="2">{{product.total || product.price}}$</td>
+            </tr>
+            <tr>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

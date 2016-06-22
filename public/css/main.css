@@ -145,10 +145,14 @@ table tbody tr:last-child > th:last-child {
     width: 2rem;
     height: 2rem;
     line-height: 2rem;
-    background: rgb(157, 204, 90);
+    background: white;
     color: rgb(55,55,55);
     font-weight: bold;
     text-decoration: none;
+}
+
+.add-button:hover {
+    background: rgb(157, 204, 90);
 }
 
 .add-button.light {
@@ -158,6 +162,22 @@ table tbody tr:last-child > th:last-child {
 #cart {
     width: 550px;
     margin: 0 0 0 auto;
+}
+
+#mainLoader {
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    display: table;
+    height: 100%;
+}
+
+#mainLoader > div {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 /* ========================

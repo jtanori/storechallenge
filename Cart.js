@@ -13,7 +13,9 @@ var Cart = function(){
     // We would check if every product we are trying to add to the
     // cart exists in the store
     function getProductCodes(){
-        var productCodes = data.filter(function(product){
+        console.log(data, 'data');
+        var productCodes = data.map(function(product){
+            console.log('product', product);
             return product.code;
         });
     }
