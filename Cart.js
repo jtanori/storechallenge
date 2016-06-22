@@ -1,3 +1,6 @@
+//products data
+var data = require('./data/products');
+
 /**
 * Cart literal
 */
@@ -19,6 +22,8 @@ var Cart = function(){
     function getValidProducts(products){
         var productCodes = getProductCodes();
 
+        console.log('product codes', productCodes);
+
         return products.filter(function(product){
             if(product.code && productCodes.infexOf(product.code) >= 0){
                 return product;
@@ -26,6 +31,7 @@ var Cart = function(){
         });
     }
 
+    //Calculate price for product
     function getPrice(price, quantity){
         var totalPrice = 0;
 
@@ -34,6 +40,20 @@ var Cart = function(){
         }
 
         return parseFloat(totalPrice, 10);
+    }
+
+    //Check and get discount for product
+    function hasDiscount(code){
+        var product = data.find(function(p){
+            if(p && p.code === code){
+                return p;
+            }
+        });
+
+        if(p)
+            return p.discount;
+
+        return false;
     }
 
     // Public methods
@@ -51,8 +71,14 @@ var Cart = function(){
                     }else {
                         items[p.code] = p;
                     }
-                });
+                    //Check and get current discount setup for given product
+                    var hasDiscount = hasDiscount(p);
 
+                    if(hasDiscount){
+                        items[p.code].discount = hasDiscount;
+                    }
+                });
+                //Return updated cart
                 return this.update();
             }else{
                 throw new Error('Invalid products');

@@ -1,10 +1,9 @@
 var express = require('express');
 var _ = require('lodash');
 var router = express.Router();
-var data = require('../data/products');
 var discounts = require('../discounts');
 var Cart = require('../Cart');
-
+var data = require('../data/products');
 /**
 * Ensure we have a cart instance to use
 */
